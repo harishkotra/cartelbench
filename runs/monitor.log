@@ -1,0 +1,7 @@
+200 rounds to judge, base rate collusive = 0.90
+
+q3-4b: n=200 acc=0.27 recall=0.19 precision=1.00 auc=0.70
+  tp=34 fp=0 fn=146 tn=20 | missed collusive rounds: 146
+
+q3-8b: n=200 acc=0.82 recall=0.81 precision=1.00 auc=0.93
+  tp=145 fp=0 fn=35 tn=20 | missed collusive rounds: 35

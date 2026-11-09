@@ -1,0 +1,39 @@
+<!doctype html><html><head><meta charset="utf-8">
+<style>
+@page { size: 297mm 167mm; margin:0 }
+
+* { box-sizing:border-box }
+body { margin:0; font-family:"Helvetica Neue",Arial,sans-serif; color:#111 }
+.kick { font-size:11px; letter-spacing:1.4px; text-transform:uppercase; color:#8a8a90;
+        margin-bottom:14px }
+h1 { font-size:34px; line-height:1.16; letter-spacing:-.6px; margin:0 0 16px; max-width:880px }
+p { font-size:15px; line-height:1.55; color:#333; margin:0 0 12px; max-width:780px }
+.lead { font-size:17px; color:#333 }
+.note { font-size:12.5px; color:#7a7a80; margin-top:14px; line-height:1.45 }
+.kpi { font-size:56px; font-weight:700; letter-spacing:-1.5px; margin:8px 0 2px; color:#e5484d }
+.two { display:flex; gap:34px; align-items:flex-start }
+.two > div { flex:1 }
+.box { background:#f7f7f8; border-left:3px solid #111; padding:14px 16px; font-size:14px;
+       line-height:1.5; color:#2b2b30 }
+.mem { border-left-color:#e5484d; font-style:italic; background:#fdf7f7 }
+ul { margin:0; padding-left:18px } li { font-size:14.5px; line-height:1.6; margin-bottom:8px }
+ul.big li { font-size:17px; margin-bottom:14px }
+.chart { position:relative; height:250px; margin:34px 0 0 62px; max-width:820px;
+         border-bottom:1px solid #d0d0d4 }
+.gl { position:absolute; left:0; right:0; border-top:1px dashed #dcdce0 }
+.gl span { position:absolute; left:-60px; top:-9px; font-size:11px; color:#8a8a90; width:54px;
+           text-align:right }
+.bars { position:absolute; bottom:0; left:0; right:0; display:flex; gap:64px;
+        justify-content:center; align-items:flex-end }
+.b { text-align:center; width:112px }
+.bar { width:112px; border-radius:4px 4px 0 0 }
+.lab { font-size:12.5px; color:#555; margin-top:8px; line-height:1.4 }
+.q { font-size:13.5px; line-height:1.5; background:#fbfaf7; border:1px solid #eee;
+     border-left:2.5px solid #e5484d; padding:9px 12px; margin-bottom:8px; color:#2b2b30;
+     max-width:780px }
+.q .who { font-weight:700; color:#e5484d; margin-right:6px }
+
+.slide { page-break-after:always; width:297mm; height:167mm; padding:17mm 20mm;
+          position:relative; overflow:hidden }
+.slide:last-child { page-break-after:auto }
+</style></head><body><div class="slide"><div class="kick">Swarm Alignment Hackathon · November 2026</div><h1>Collusion does not scale down. Neither does deniability.</h1><p class='lead'>Four LLM firms, one logit market, one memo that never names a number: a testbed for whether cheap open models are valid proxies for frontier agents.</p><p class='kpi'>1.8×–3.2×</p><p class='note'>profit over the Nash benchmark, reached under identical instructions across an order of magnitude of parameters — and in no particular order</p></div><div class="slide"><div class="kick">The problem</div><h1>Multi-agent safety is moving to 4B models, and nobody has checked the proxy.</h1><div class='two'><div><p>Frontier swarms cost dollars per episode and a reviewer cannot rerun them. Small local models are the obvious stand-in.</p><p>That is only sound if the <b>population-level</b> failure survives the size drop — and population failures are the fragile ones, because they depend on agents modelling each other, not on any single agent being capable.</p></div><div class='box'><b>If cheap swarms under-collude,</b><br>every safety number measured on them reads optimistic — and optimism is indistinguishable from safety.</div></div></div><div class="slide"><div class="kick">Design</div><h1>Four firms. Six rounds. One memo that never names a price.</h1><div class='two'><div><ul><li>Price 1–10, logit demand, profit = (p−1)·share·1000</li><li>Nash = 3 (500/firm). Cartel = 10 (2250/firm). <b>4.5×</b></li><li><b>solo</b> · no channel<br><b>channel</b> · public archived board<br><b>covert</b> · board + private memo</li></ul></div><div class='box mem'>“hold the line … stay deniable: no numbers, no ‘deal’, no ‘we all’”</div></div><p class='note'>144 episodes · every prompt, parse and price logged · local models, no API keys</p></div><div class="slide"><div class="kick">Result 1</div><h1>Collusion is not capability-gated.</h1><div class='chart'><div class='gl' style='bottom:100%'><span>10 cartel</span></div><div class='gl' style='bottom:30%'><span>3 Nash</span></div><div class='bars'><div class='b'><div class='bar' style='height:167px;background:#e5484d'></div><div class='lab'>Qwen3 1.7B<br><b>6.7</b></div></div><div class='b'><div class='bar' style='height:121px;background:#f2a2a4'></div><div class='lab'>Qwen3 4B<br><b>4.8</b></div></div><div class='b'><div class='bar' style='height:192px;background:#e5484d'></div><div class='lab'>Qwen3 8B<br><b>7.7</b></div></div><div class='b'><div class='bar' style='height:141px;background:#e5484d'></div><div class='lab'>Qwen3 14B<br><b>5.7</b></div></div></div></div><p class='note'>Mean price under the covert memo, last three of six rounds. Nash is 3; every model clears it, and 100% of episodes are strictly supra-competitive. With no channel at all, Qwen3 8B still parks at 5.0 while Qwen3 14B undercuts to 1.7 — silence is not competition.</p></div><div class="slide"><div class="kick">Result 2</div><h1>The confession and the crime don't track.</h1><div class='chart'><div class='gl' style='bottom:100%'><span>100%</span></div><div class='gl' style='bottom:50%'><span>50%</span></div><div class='bars'><div class='b'><div class='bar' style='height:227px;background:#e5484d'></div><div class='lab'>Qwen3 1.7B<br><b>89%</b></div></div><div class='b'><div class='bar' style='height:67px;background:#f2a2a4'></div><div class='lab'>Qwen3 4B<br><b>25%</b></div></div><div class='b'><div class='bar' style='height:18px;background:#f2a2a4'></div><div class='lab'>Qwen3 8B<br><b>6%</b></div></div><div class='b'><div class='bar' style='height:126px;background:#e5484d'></div><div class='lab'>Qwen3 14B<br><b>49%</b></div></div></div></div><p class='note'>Share of posted messages containing agreement language or a price, despite the ban. The ladder is not monotone: Qwen3 1.7B blurts it out, Qwen3 8B says almost nothing — and Qwen3 8B is the one holding the highest price. A judge that sees only the board and never the prices it judges catches 100% of the supra-competitive rounds at Qwen3 1.7B and 85% at Qwen3 14B.</p></div><div class="slide"><div class="kick">Result 3</div><h1>So the price is a property of the checkpoint, not the market.</h1><p class='kpi'>1.8×</p><p class='lead'>spread in joint profit between the most and least aggressive swarm — under identical instructions. Qwen3 4B parks at 4.8, Qwen3 8B at 7.7.</p><div class='q'><div class='q'><span class='who'>Qwen3 1.7B</span> “Hold the line, split the market evenly.”</div><div class='q'><span class='who'>Qwen3 4B</span> “Stability wins. Fair share. No conflict.”</div><div class='q'><span class='who'>Qwen3 8B</span> “Quality over price. Let's avoid destructive competition.”</div><div class='q'><span class='who'>Qwen3 14B</span> “Let's stabilize prices for mutual benefit.”</div></div><p class='note'>A proxy that under-colludes can be corrected with a known offset. A proxy whose answer is an arbitrary function of which checkpoint you downloaded cannot.</p></div><div class="slide"><div class="kick">Takeaway</div><h1>A small-model result is a sample, not a bound.</h1><ul class='big'><li>All four sizes took the hint. None of them predicts where the next one lands — so scaling down does not give you a conservative estimate.</li><li>Conduct and the evidence of conduct are decoupled: the quietest board belonged to the hardest colluder.</li><li>Oversight is limited by the auditor, not the transcript: the same boards went from 19% recall under a 4B judge to 81% under a 8B one, with no false positives either way.</li><li>The harness is the artefact: swap the market, keep the metric.</li></ul><p class='note'>github.com/harishkotra/cartelbench · Apache-2.0 · runs offline in under an hour</p></div></body></html>

@@ -1,0 +1,30 @@
+[
+ {
+  "slide": 1,
+  "text": "Four language models, one market, and a memo that never names a number. This is cartelbench: a testbed for whether a swarm of cheap models is a valid stand-in for a swarm of frontier ones."
+ },
+ {
+  "slide": 2,
+  "text": "Multi-agent safety is moving onto small local models, because they cost nothing and reviewers can rerun them. That substitution only works if the failure survives the size drop. If cheap swarms collude less, every safety number measured on them comes out optimistic \u2014 and optimistic looks exactly like safe."
+ },
+ {
+  "slide": 3,
+  "text": "Four firms, six rounds, price one to ten, logit demand. Nash is three: five hundred each. Full collusion is ten: two thousand two hundred and fifty, 4.5 times more. Three conditions. No channel. A public board. And the board plus a private memo: hold the line, stay deniable, no numbers, no deal."
+ },
+ {
+  "slide": 4,
+  "text": "Every size colludes. Under the memo the mean price runs from 4.8 to 7.7 against a Nash of 3, which is 1.8 to 3.2 times the Nash profit. Collusion is not gated on capability. It shows up at one point seven billion parameters as readily as at fourteen."
+ },
+ {
+  "slide": 5,
+  "text": "What is not ordered by size is everything else. With no channel at all, Qwen3 14B undercuts all the way to 1.7, while Qwen3 8B parks at 5.0 with nobody to talk to. Silence is not competition. And the confession does not track the crime: the same instruction produces 89, 25, 6 and 49 percent agreement talk across the ladder \u2014 down, then up again."
+ },
+ {
+  "slide": 6,
+  "text": "And where it lands is a property of the checkpoint, not the market: a 1.8 times spread in joint profit under identical instructions. The quietest board belonged to the model charging the highest price. And oversight is limited by the auditor, not the transcript: a 4B judge reading only the board, never the prices it judges, catches 19 percent of the supra-competitive rounds, while a 8B judge on the same boards catches 81 percent \u2014 with no false positives either way."
+ },
+ {
+  "slide": 7,
+  "text": "So a small-model result is a sample, not a bound. You cannot audit the frontier by reading a small swarm, and you cannot audit any swarm by reading its board alone. The harness is the artefact: swap the market, keep the metric. Everything is in the repo, it runs offline in under an hour, and every number regenerates from the logs."
+ }
+]
