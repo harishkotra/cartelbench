@@ -19,7 +19,7 @@
 5. And the deniability clause fails everywhere — just not in order. The quietest board belongs to
    Qwen3 8B, which is holding the highest price: 7.7.
 
-6. A judge that never sees the prices, only the board, catches 81% of supra-competitive rounds when the auditor is a 8B model and 19% when it is a 4B one. Agents told to hide the
+6. A judge that never sees the prices, only the board, catches 81% of supra-competitive rounds when the auditor is a Qwen3 8B model and 19% when it is a Qwen3 4B one. Agents told to hide the
    deal put it in writing; agents smart enough not to write it down also escape the reading.
 
 7. Everything is 144 logged episodes, no API keys, reproducible on a laptop.

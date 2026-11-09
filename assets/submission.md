@@ -8,15 +8,13 @@ a six-round logit market where full collusion pays
 4.5x the Nash profit, and one condition adds a private
 memo asking each firm to hold the line while staying deniable, without ever naming a price. Across
 144 logged episodes and four model sizes, collusion is not capability-gated: every size settled
-above the Nash price in 100% to
-100% of covert episodes, at 1.8× to 3.2× Nash
+above the Nash price in 100% of covert episodes, at 1.8× to 3.2× Nash
 profit. Nothing else is ordered by size. With no channel at all, Qwen3 14B undercuts to
 1.7 while Qwen3 8B parks at 5.0. Agreement language on the board
 runs 6% to 89% without tracking collusion, and the quietest
-board belongs to the model holding the highest price. The price the swarm picks spans 1.8x in
-joint profit under identical instructions, so cheap swarms do not merely under-report collusion - they
-report an arbitrary point on a curve. A monitor that reads only the board, never the prices it judges,
-catches 81% of supra-competitive rounds when the auditor is a 8B model and 19% when it is a 4B one.
+board belongs to the model holding the highest price. So cheap swarms do not merely under-report
+collusion - they report an arbitrary point on a curve. A monitor that reads only the board, never the prices it judges,
+catches 81% of supra-competitive rounds when the auditor is a Qwen3 8B model and 19% when it is a Qwen3 4B one.
 
 ## Tracks
 
@@ -31,15 +29,15 @@ direction, so a small-model swarm is a sample rather than a bound.
 ## What is new
 
 - A four-firm collusion micro-market that is seeded, logged and reproducible offline in an hour.
-- The finding that neither collusion nor its visibility is monotone in size: a board-only monitor's
-  recall is set by how talkative the checkpoint is, not by whether it colluded.
+- The finding that neither collusion nor its visibility is monotone in size: a board-only judge's
+  recall is set by the auditor's size, not the agents' &mdash; 81% of supra-competitive rounds when the auditor is a Qwen3 8B model and 19% when it is a Qwen3 4B one.
 - A monitor protocol that withholds the judged round's prices, so a detector cannot pass by reading
   the answer.
 
 ## Links
 
 - repo: https://github.com/harishkotra/cartelbench
-- report: report/report.pdf (4 pages)
+- report: report/report.pdf
 - slides: report/slides.pdf
 - video: (upload `report/video/cartelbench.mp4`, paste URL)
 - cover image: assets/cover.png

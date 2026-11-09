@@ -29,8 +29,8 @@ def build():
     _hj = max(mon, key=lambda k: mon[k]["recall"]) if mon else None
     mon_txt = (f"A board-only judge that never sees prices catches "
                f"{pct(mon[_hj]['recall'])} of supra-competitive rounds when the auditor is a "
-               f"{NICE[_hj].replace('Qwen3 ', '')} model and {pct(mon[_lj]['recall'])} when it is a "
-               f"{NICE[_lj].replace('Qwen3 ', '')} one."
+               f"{NICE[_hj]} model and {pct(mon[_lj]['recall'])} when it is a "
+               f"{NICE[_lj]} one."
                if mon else "Monitor not yet run.")
     lines.append("")
     lines.append(f"Nash price is {NASH}; full collusion is {market.P_MAX}. "

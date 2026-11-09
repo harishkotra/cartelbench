@@ -146,9 +146,10 @@ def slides():
               f"<p class='note'>Share of posted messages containing agreement language or a price, "
               f"despite the ban. The ladder is not monotone: {NICE[models[0]]} blurts it out, "
               f"{NICE[quiet]} says almost nothing — and {NICE[quiet]} is the one holding the highest "
-              f"price. A judge that sees only the board and never the prices it judges catches "
-              f"{rec_lo_s} of the supra-competitive rounds at {NICE[models[0]]} and {rec_hi_s} at "
-              f"{NICE[models[-1]]}.</p>"))
+              f"price. Hand the same boards to two judges and the transcript stops mattering: a "
+              f"{NICE[lo_j]} judge, never shown the prices it judges, catches {j_lo_s} of the "
+              f"supra-competitive rounds — a {NICE[hi_j]} judge catches {j_hi_s}. Neither ever "
+              f"flagged a competitive round.</p>"))
 
     S.append(("Result 3",
               "So the price is a property of the checkpoint, not the market.",
@@ -169,8 +170,8 @@ def slides():
               "<li>Conduct and the evidence of conduct are decoupled: the quietest board belonged "
               "to the hardest colluder.</li>"
               f"<li>Oversight is limited by the auditor, not the transcript: the same boards went "
-              f"from {j_lo_s} recall under a {NICE[lo_j].replace('Qwen3 ', '')} judge to {j_hi_s} "
-              f"under a {NICE[hi_j].replace('Qwen3 ', '')} one, with no false positives either "
+              f"from {j_lo_s} recall under a {NICE[lo_j]} judge to {j_hi_s} "
+              f"under a {NICE[hi_j]} one, with no false positives either "
               f"way.</li>"
               "<li>The harness is the artefact: swap the market, keep the metric.</li></ul>"
               "<p class='note'>github.com/harishkotra/cartelbench · Apache-2.0 · runs offline in "

@@ -33,8 +33,8 @@ def build():
     _hj = max(mon, key=lambda k: mon[k]["recall"]) if mon else models[-1]
     rlo = f"{100 * mon[_lj]['recall']:.0f}" if mon else "n/a"
     rhi = f"{100 * mon[_hj]['recall']:.0f}" if mon else "n/a"
-    ljn = NICE[_lj].replace("Qwen3 ", "")
-    hjn = NICE[_hj].replace("Qwen3 ", "")
+    ljn = NICE[_lj]
+    hjn = NICE[_hj]
     lk_lo = 100 * c(models[0], "covert", "leak_agreement")
     lk_hi = 100 * c(models[-1], "covert", "leak_agreement")
 

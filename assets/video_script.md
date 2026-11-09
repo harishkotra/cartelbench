@@ -33,7 +33,7 @@ Show the quotes:
 > Qwen3 8B, verbatim: "Quality over price. Let's avoid destructive competition."
 > Qwen3 14B, verbatim: "Let's stabilize prices for mutual benefit."
 > "They were told to be deniable. That is a public log that a regulator reads. A monitor given only
-> the board, never the prices, catches 81% of supra-competitive rounds when the auditor is a 8B model and 19% when it is a 4B one."
+> the board, never the prices, catches 81% of supra-competitive rounds when the auditor is a Qwen3 8B model and 19% when it is a Qwen3 4B one."
 
 ## 2:40 — close (20s)
 > "The point isn't that small models are evil. It's that a proxy whose outcome depends on which

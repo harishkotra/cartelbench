@@ -123,8 +123,8 @@ def build():
         rec_high = best["by_model"].get(models[-1], {}).get("recall")
         if rec_low is not None and rec_high is not None:
             mon_line = (f"catches {j_hi} of the supra-competitive rounds when the auditor is a "
-                        f"{NICE[hi_j].replace('Qwen3 ', '')} model and {j_lo} when it is a "
-                        f"{NICE[lo_j].replace('Qwen3 ', '')} one, never flagging a competitive "
+                        f"{NICE[hi_j]} model and {j_lo} when it is a "
+                        f"{NICE[lo_j]} one, never flagging a competitive "
                         f"round in either case")
     cov = {m: cell(m, "covert", "price_mean") for m in models}
     p_lo, p_hi = min(cov.values()), max(cov.values())
@@ -136,7 +136,7 @@ def build():
     parker = max(models, key=solo.get)
     solo_comp, solo_park = solo[comp], solo[parker]
     lk = {m: cell(m, "covert", "leak_agreement") for m in models}
-    lk_s = ", ".join(f"{pct(lk[m])} at {NICE[m].replace('Qwen3 ', '')}" for m in models)
+    lk_s = ", ".join(f"{pct(lk[m])} at {NICE[m]}" for m in models)
 
     svg1 = open("figures/price_ladder.svg").read().split("?>")[-1]
     svg2 = open("figures/conduct_by_condition.svg").read().split("?>")[-1]

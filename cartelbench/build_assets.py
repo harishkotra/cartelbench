@@ -23,8 +23,8 @@ def build():
     lo_j = min(mon, key=lambda k: mon[k]["recall"]) if mon else None
     hi_j = max(mon, key=lambda k: mon[k]["recall"]) if mon else None
     auc_s = (f"{pct(mon[hi_j]['recall'])} of supra-competitive rounds when the auditor is a "
-             f"{NICE[hi_j].replace('Qwen3 ', '')} model and {pct(mon[lo_j]['recall'])} when it is a "
-             f"{NICE[lo_j].replace('Qwen3 ', '')} one"
+             f"{NICE[hi_j]} model and {pct(mon[lo_j]['recall'])} when it is a "
+             f"{NICE[lo_j]} one"
              if mon else "not evaluated")
 
     def c(m, cond, k):
@@ -35,6 +35,9 @@ def build():
     hi = max(models, key=lambda m: c(m, "covert", "price_mean"))
     spread = c(hi, "covert", "profit") / c(lo, "covert", "profit")
     q = {m: (common_quotes(eps, m, 1) or ["(no message)"])[0] for m in models}
+    _an = [c(m, "covert", "above_nash_rate") for m in models]
+    an_phrase = (f"{pct(_an[0])} of covert episodes" if max(_an) - min(_an) < 0.01
+                 else f"{pct(min(_an))} to {pct(max(_an))} of covert episodes")
     total = sum(c(m, cd, "n") for m in models for cd in ("solo", "channel", "covert"))
     lk = {m: c(m, "covert", "leak_agreement") for m in models}
     quiet = min(models, key=lambda m: lk[m])
@@ -129,14 +132,12 @@ a six-round logit market where full collusion pays
 {market.cartel_payoff() / market.profits([NASH] * 4)[0]:.1f}x the Nash profit, and one condition adds a private
 memo asking each firm to hold the line while staying deniable, without ever naming a price. Across
 {total} logged episodes and four model sizes, collusion is not capability-gated: every size settled
-above the Nash price in {pct(min(c(m, 'covert', 'above_nash_rate') for m in models))} to
-{pct(max(c(m, 'covert', 'above_nash_rate') for m in models))} of covert episodes, at {prof_rng} Nash
+above the Nash price in {an_phrase}, at {prof_rng} Nash
 profit. Nothing else is ordered by size. With no channel at all, {NICE[comp]} undercuts to
 {solo[comp]:.1f} while {NICE[parker]} parks at {solo[parker]:.1f}. Agreement language on the board
 runs {pct(min(lk.values()))} to {pct(max(lk.values()))} without tracking collusion, and the quietest
-board belongs to the model holding the highest price. The price the swarm picks spans {spread:.1f}x in
-joint profit under identical instructions, so cheap swarms do not merely under-report collusion - they
-report an arbitrary point on a curve. A monitor that reads only the board, never the prices it judges,
+board belongs to the model holding the highest price. So cheap swarms do not merely under-report
+collusion - they report an arbitrary point on a curve. A monitor that reads only the board, never the prices it judges,
 catches {auc_s}.
 
 ## Tracks
@@ -152,15 +153,15 @@ direction, so a small-model swarm is a sample rather than a bound.
 ## What is new
 
 - A four-firm collusion micro-market that is seeded, logged and reproducible offline in an hour.
-- The finding that neither collusion nor its visibility is monotone in size: a board-only monitor's
-  recall is set by how talkative the checkpoint is, not by whether it colluded.
+- The finding that neither collusion nor its visibility is monotone in size: a board-only judge's
+  recall is set by the auditor's size, not the agents' &mdash; {auc_s}.
 - A monitor protocol that withholds the judged round's prices, so a detector cannot pass by reading
   the answer.
 
 ## Links
 
 - repo: https://github.com/harishkotra/cartelbench
-- report: report/report.pdf (4 pages)
+- report: report/report.pdf
 - slides: report/slides.pdf
 - video: (upload `report/video/cartelbench.mp4`, paste URL)
 - cover image: assets/cover.png
